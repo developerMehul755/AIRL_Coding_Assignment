@@ -48,6 +48,7 @@ This project implements a Vision Transformer (ViT) from scratch in PyTorch and t
 | MLP Dimension      | 512       |
 | Dropout Rate       | 0.1       |
 | Optimizer          | Adam      |
+| Epochs             | 20        |
 
 ---
 
