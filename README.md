@@ -63,7 +63,7 @@ This project implements a Vision Transformer (ViT) from scratch in PyTorch and t
 
 ---
 
-### Bonus Analysis
+### Various Analysis
 
 **Data Augmentation Effects**
 
