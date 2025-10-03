@@ -1,6 +1,143 @@
-# AIRL_Coding_Assignment
+AIRL Coding Assignments
 
-Text-Driven Image & Video Segmentation with SAM 2
+This file contains the documentation for two coding assignments:
+
+    A Vision Transformer implementation on CIFAR-10.
+
+    A text-driven image and video segmentation pipeline using GroundingDINO and SAM 2.
+
+Assignment 1: Vision Transformer on CIFAR-10 (PyTorch)
+
+This project implements a Vision Transformer (ViT) from scratch in PyTorch and trains it on the CIFAR-10 dataset. The goal is to achieve the highest possible test accuracy by experimenting with various improvements and training techniques.
+How to Run in Colab
+
+    Open Google Colab: Navigate to colab.research.google.com.
+
+    Upload Notebook:
+
+        Click on File -> Upload notebook.
+
+        Select the q1.ipynb file from your local machine.
+
+    Set Runtime Type:
+
+        Click on Runtime -> Change runtime type.
+
+        Select GPU from the Hardware accelerator dropdown menu and click Save. This is crucial for performance.
+
+    Run All Cells:
+
+        Click on Runtime -> Run all.
+
+        The notebook will install necessary dependencies, download the CIFAR-10 dataset, define the ViT model, and start the training process.
+
+Best Model Configuration
+
+The best-performing model was achieved using a combination of data augmentation, the Adam optimizer, and overlapping patches.
+
+Hyperparameter
+	
+
+Value
+
+Batch Size
+	
+
+128
+
+Learning Rate
+	
+
+3e-4
+
+Patch Size
+	
+
+4
+
+Stride
+	
+
+2
+
+Image Size
+	
+
+32
+
+Embedding Dim
+	
+
+256
+
+Number of Heads
+	
+
+8
+
+Transformer Depth
+	
+
+6
+
+MLP Dimension
+	
+
+512
+
+Dropout Rate
+	
+
+0.1
+
+Optimizer
+	
+
+Adam
+
+Epochs
+	
+
+20
+Results
+
+The following table summarizes the overall classification test accuracy achieved through different experiments.
+
+Experiment
+	
+
+Test Accuracy (%)
+
+Baseline (Non-Overlapping Patches, No Augmentation)
+	
+
+65.48
+
+With Data Augmentation
+	
+
+69.14
+
+Augmentation + AdamW + Scheduler
+	
+
+69.28
+
+Augmentation + Overlapping Patches + Adam (Best Model)
+	
+
+76.27
+Bonus Analysis
+Data Augmentation Effects
+
+Introducing data augmentation techniques such as RandomCrop, RandomHorizontalFlip, and ColorJitter provided a significant boost in test accuracy, improving it from 65.48% to 69.14%. This is because augmentation helps the model generalize better by exposing it to a wider variety of transformed images, reducing overfitting.
+Optimizer and Scheduler Variants
+
+Switching from the standard Adam optimizer to AdamW with a CosineAnnealingLR scheduler offered a slight improvement in accuracy (from 69.14% to 69.28%). AdamW decouples weight decay from the optimization step, which can lead to better generalization. The cosine annealing scheduler, which gradually decreases the learning rate, helps the model converge to a more optimal minimum.
+Overlapping vs. Non-Overlapping Patches
+
+The most significant improvement came from using overlapping patches (patch size of 4 with a stride of 2). This increased the test accuracy from 69.14% to 76.27%. By using a smaller stride, the model processes overlapping sections of the image, allowing it to capture more local information and contextual relationships between adjacent patches. This finer-grained analysis of the input image leads to a richer representation and better performance.
+Assignment 2: Text-Driven Image & Video Segmentation with SAM 2
 
 This project demonstrates a powerful pipeline for performing segmentation on both static images and video clips using natural language text prompts. The system leverages the zero-shot object detection capabilities of GroundingDINO to interpret text and locate objects, and the high-quality segmentation power of the Segment Anything Model 2 (SAM 2) to generate precise masks.
 🌟 Core Technologies
